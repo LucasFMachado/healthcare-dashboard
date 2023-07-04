@@ -19,7 +19,7 @@
     "rules": {
       "camelcase": "off",
         "import/no-duplicates": "off",
-        "prettier/prettier": "off",
+        "prettier/prettier": "error",
         "react/react-in-jsx-scope": "off",
         "space-before-function-paren": ["error", "never"],
         "comma-dangle": "off",
