@@ -5,21 +5,22 @@ import { usePathname } from 'next/navigation'
 import { styled } from 'styled-components'
 
 import { HelpIcon } from '@/assets/icons'
-import { Subtitle2 } from '@/styles/components'
+import { Body2, Subtitle2 } from '@/styles/components'
 import { colors } from '@/styles/variables'
 import { pages } from '@/utils/pages'
 
-import { Divider } from './Divider'
+import { Divider } from '../shared/Divider'
 
-export function MobileMenu() {
+export function DestokMenu() {
   const path = usePathname()
 
   return (
     <Container>
       <Brand>
-        <img src="logo-mobile.svg" alt="Healthcare logo image" />
+        <img src="logo.svg" alt="Healthcare logo image" />
       </Brand>
-      {pages.map(({ route, icon: Icon }) => (
+      <MenuTitle>MEDICINE</MenuTitle>
+      {pages.map(({ route, name, icon: Icon }) => (
         <Link key={route} href={route}>
           <MenuItem selected={path === route}>
             <Icon
@@ -28,18 +29,15 @@ export function MobileMenu() {
                 path === route ? colors.primary.main : colors.grey.lightest
               }
             />
+            <span>{name}</span>
           </MenuItem>
         </Link>
       ))}
       <Divider />
-      <Link href="/help">
-        <MenuItem selected={path === '/help'}>
-          <HelpIcon
-            size={16}
-            color={
-              path === '/help' ? colors.primary.main : colors.grey.lightest
-            }
-          />
+      <Link href="/login">
+        <MenuItem>
+          <HelpIcon size={16} color={colors.grey.lightest} />
+          <span>Help</span>
         </MenuItem>
       </Link>
     </Container>
@@ -47,12 +45,11 @@ export function MobileMenu() {
 }
 
 const Container = styled.aside`
-  width: 68px;
+  width: 256px;
   height: 100%;
-  padding: 24px 0px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: ${colors.white};
   box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 8px 0px;
 `
@@ -60,14 +57,18 @@ const Container = styled.aside`
 const Brand = styled.div`
   width: 100%;
   margin-bottom: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   img {
-    width: 30px;
-    height: 30px;
+    width: 142px;
   }
+`
+
+const MenuTitle = styled(Body2)`
+  color: ${colors.grey.main};
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  padding: 14px 0;
 `
 
 const MenuItem = styled(Subtitle2)<{ selected?: boolean }>`
@@ -77,9 +78,4 @@ const MenuItem = styled(Subtitle2)<{ selected?: boolean }>`
   align-items: center;
   justify-content: flex-start;
   padding: 14px 0;
-
-  svg {
-    height: 16px;
-    width: 16px;
-  }
 `

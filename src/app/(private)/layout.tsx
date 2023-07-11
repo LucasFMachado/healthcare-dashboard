@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { Dashboard } from '@/components/Dashboard'
+import { Dashboard } from '@/components/layout/Dashboard'
 
 export const metadata = {
   title: 'Dashboard | Healthcare Dashboard',

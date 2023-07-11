@@ -15,6 +15,7 @@ export default createGlobalStyle`
     font-size: 16px;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
+    color: #25282B;
   }
 
   a {
