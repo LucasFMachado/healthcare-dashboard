@@ -4,11 +4,11 @@ import { ReactNode, useEffect, useState } from 'react'
 import { styled } from 'styled-components'
 
 import { useMenu } from '@/contexts/MenuContext'
+import { colors } from '@/styles/variables'
 
 import { DestokMenu } from './DestokMenu'
 import { Header } from './Header'
 import { MobileMenu } from './MobileMenu'
-import { PageWrapper } from './PageWrapper'
 
 interface DashboardProps {
   children: ReactNode
@@ -25,10 +25,10 @@ export function Dashboard({ children }: DashboardProps) {
   return (
     <Container>
       {fullMenu ? <DestokMenu /> : <MobileMenu />}
-      <Content margin={margin}>
+      <PageWrapper margin={margin}>
         <Header />
-        <PageWrapper>{children}</PageWrapper>
-      </Content>
+        <Content>{children}</Content>
+      </PageWrapper>
     </Container>
   )
 }
@@ -39,8 +39,15 @@ const Container = styled.div`
   gap: 8px;
 `
 
-const Content = styled.div<{ margin: string }>`
+const PageWrapper = styled.div<{ margin: string }>`
   width: -webkit-fill-available;
   margin-left: ${props => props.margin};
   padding-left: 16px;
+`
+
+const Content = styled.main`
+  width: 100%;
+  padding: 16px 16px 16px 0;
+  background-color: ${colors.white};
+  margin-top: 50px;
 `
