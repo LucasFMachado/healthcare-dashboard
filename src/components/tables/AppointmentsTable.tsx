@@ -119,13 +119,13 @@ export function AppointmentsTable() {
             <th>
               <Subtitle2>Name</Subtitle2>
             </th>
-            <th>
+            <th className="optional_column">
               <Subtitle2>Email</Subtitle2>
             </th>
             <th>
               <Subtitle2>Date</Subtitle2>
             </th>
-            <th>
+            <th className="optional_column">
               <Subtitle2>Visit Time</Subtitle2>
             </th>
             <th>
@@ -145,13 +145,13 @@ export function AppointmentsTable() {
                   <Body2>{user.name}</Body2>
                 </div>
               </td>
-              <td>
+              <td className="optional_column">
                 <Body2>{user.email}</Body2>
               </td>
               <td>
                 <Body2>{user.date}</Body2>
               </td>
-              <td>
+              <td className="optional_column">
                 <Body2>{user.visitTime}</Body2>
               </td>
               <td>
@@ -190,6 +190,7 @@ const TableContainer = styled.div`
   border-radius: 4px;
   box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  overflow-x: auto;
 
   h5 {
     padding: 0 12px 12px 12px;
@@ -209,7 +210,7 @@ export const Table = styled.table`
     }
 
     td {
-      padding: 12px;
+      padding: 8px;
       color: ${colors.grey.dark};
 
       &:first-child {
@@ -226,6 +227,18 @@ export const Table = styled.table`
           }
         }
       }
+    }
+  }
+
+  .optional_column {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 12px;
+
+    .optional_column {
+      display: initial;
     }
   }
 `

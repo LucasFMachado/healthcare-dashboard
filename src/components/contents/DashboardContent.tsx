@@ -64,13 +64,17 @@ export function DashboardContent() {
 }
 
 const ChartContainer = styled.div`
-  height: 370px;
+  min-height: 370px;
   border-radius: 4px;
   box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
 `
 
 const Wrapper = styled.div`
@@ -82,9 +86,17 @@ const Wrapper = styled.div`
 const Summary = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 255px);
-  gap: 30px;
-  justify-content: space-between;
+  grid-template-columns: 1fr;
+  place-items: center;
+  gap: 10px;
+
+  @media (min-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `
 
 const SummaryItem = styled.div`
@@ -96,6 +108,12 @@ const SummaryItem = styled.div`
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 24px;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    gap: 12px;
+    padding: 10px;
+  }
 
   > div {
     display: flex;

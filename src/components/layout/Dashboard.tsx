@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { styled } from 'styled-components'
 
 import { useMenu } from '@/contexts/MenuContext'
@@ -16,13 +16,19 @@ interface DashboardProps {
 
 export function Dashboard({ children }: DashboardProps) {
   const { fullMenu } = useMenu()
+  const [margin, setMargin] = useState('60px')
+
+  useEffect(() => {
+    setMargin(fullMenu ? '200px' : '60px')
+  }, [fullMenu])
+
   return (
     <Container>
       {fullMenu ? <DestokMenu /> : <MobileMenu />}
-      <div>
+      <Content margin={margin}>
         <Header />
         <PageWrapper>{children}</PageWrapper>
-      </div>
+      </Content>
     </Container>
   )
 }
@@ -31,8 +37,10 @@ const Container = styled.div`
   display: flex;
   height: 100vh;
   gap: 8px;
+`
 
-  > div {
-    width: 100%;
-  }
+const Content = styled.div<{ margin: string }>`
+  width: -webkit-fill-available;
+  margin-left: ${props => props.margin};
+  padding-left: 16px;
 `

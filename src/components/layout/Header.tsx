@@ -22,19 +22,23 @@ export function Header() {
       <Profile>
         <NotificationIcon size={24} color={colors.grey.light} />
         <img src="profile.png" />
-        <p>Lucas Machado</p>
+        <Body2>Lucas Machado</Body2>
       </Profile>
     </Container>
   )
 }
 
 const Container = styled.header`
-  height: 88px;
-  padding: 16px;
+  height: 50px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: ${colors.white};
+  position: fixed;
+  width: inherit;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 8px 0px;
+  z-index: 999;
 `
 
 const Title = styled.div`
@@ -69,12 +73,7 @@ const Profile = styled.div`
 
   img {
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-  }
-
-  p {
-    font-weight: 500;
-    font-size: 20px;
+    width: 24px;
+    height: 24px;
   }
 `

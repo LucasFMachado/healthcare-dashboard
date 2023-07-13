@@ -45,13 +45,15 @@ export function DestokMenu() {
 }
 
 const Container = styled.aside`
-  width: 256px;
+  width: 200px;
   height: 100%;
   padding: 24px;
   display: flex;
   flex-direction: column;
   background-color: ${colors.white};
   box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 8px 0px;
+
+  position: fixed;
 `
 
 const Brand = styled.div`

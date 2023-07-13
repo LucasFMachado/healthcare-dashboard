@@ -15,6 +15,7 @@ export function PageWrapper({ children }: PageWrapperProps) {
 
 const Container = styled.main`
   width: 100%;
-  padding: 16px;
+  padding: 16px 16px 16px 0;
   background-color: ${colors.white};
+  margin-top: 50px;
 `

@@ -47,14 +47,15 @@ export function MobileMenu() {
 }
 
 const Container = styled.aside`
-  width: 68px;
+  width: 60px;
   height: 100%;
-  padding: 24px 0px;
+  padding: 24px 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${colors.white};
   box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 8px 0px;
+  position: fixed;
 `
 
 const Brand = styled.div`

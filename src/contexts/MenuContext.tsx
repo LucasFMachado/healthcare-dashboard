@@ -1,6 +1,14 @@
 'use client'
 
-import { createContext, ReactNode, useContext, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
+
+import useMedia from '@/hooks/useMedia'
 
 interface MenuProviderProps {
   children: ReactNode
@@ -14,7 +22,12 @@ interface MenuContextProps {
 const MenuContext = createContext({} as MenuContextProps)
 
 const MenuProvider = ({ children }: MenuProviderProps) => {
-  const [fullMenu, setFullMenu] = useState<boolean>(true)
+  const [fullMenu, setFullMenu] = useState(false)
+  const startFullMenu = useMedia('(min-width: 800px)')
+
+  useEffect(() => {
+    setFullMenu(startFullMenu ?? false)
+  }, [startFullMenu])
 
   function toggleMenu() {
     setFullMenu(!fullMenu)
