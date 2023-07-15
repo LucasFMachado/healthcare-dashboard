@@ -6,7 +6,7 @@ import { styled } from 'styled-components'
 
 import { HelpIcon } from '@/assets/icons'
 import { Subtitle2 } from '@/styles/components'
-import { colors } from '@/styles/variables'
+import { colors, shadows } from '@/styles/variables'
 import { pages } from '@/utils/pages'
 
 import { Divider } from '../shared/Divider'
@@ -17,7 +17,7 @@ export function MobileMenu() {
   return (
     <Container>
       <Brand>
-        <img src="logo-mobile.svg" alt="Healthcare logo image" />
+        <img src="brand/logo-mobile.svg" alt="Healthcare logo image" />
       </Brand>
       {pages.map(({ route, icon: Icon }) => (
         <Link key={route} href={route}>
@@ -54,7 +54,7 @@ const Container = styled.aside`
   flex-direction: column;
   align-items: center;
   background-color: ${colors.white};
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 8px 0px;
+  box-shadow: ${shadows.layout};
   position: fixed;
 `
 

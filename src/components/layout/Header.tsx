@@ -5,8 +5,8 @@ import { styled } from 'styled-components'
 
 import { NotificationIcon } from '@/assets/icons'
 import { useMenu } from '@/contexts/MenuContext'
-import { Body2 } from '@/styles/components'
-import { colors } from '@/styles/variables'
+import { Body2, Small3 } from '@/styles/components'
+import { colors, shadows } from '@/styles/variables'
 
 export function Header() {
   const { toggleMenu } = useMenu()
@@ -19,25 +19,30 @@ export function Header() {
         </button>
         <Body2>Dashboard</Body2>
       </Title>
-      <Profile>
-        <NotificationIcon size={24} color={colors.grey.light} />
-        <img src="profile.png" />
-        <Body2>Lucas Machado</Body2>
-      </Profile>
+      <Actions>
+        <Notification>
+          <NotificationIcon size={22} color={colors.grey.light} />
+          <Small3>2</Small3>
+        </Notification>
+        <Profile>
+          <img src="avatars/profile.png" />
+          <Body2>James Dean</Body2>
+        </Profile>
+      </Actions>
     </Container>
   )
 }
 
 const Container = styled.header`
   height: 50px;
-  padding: 12px;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: ${colors.white};
   position: fixed;
   width: inherit;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 8px 0px;
+  box-shadow: ${shadows.layout};
   z-index: 999;
 `
 
@@ -66,10 +71,33 @@ const Title = styled.div`
   }
 `
 
+const Actions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+`
+
+const Notification = styled.div`
+  position: relative;
+  cursor: pointer;
+
+  span {
+    background-color: ${colors.error.main};
+    color: ${colors.white};
+    position: absolute;
+    padding: 1px 4px;
+    border-radius: 50%;
+    top: 0;
+    right: -8px;
+  }
+`
+
 const Profile = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
+  border-left: 1px solid ${colors.divider};
+  padding-left: 16px;
 
   img {
     border-radius: 50%;

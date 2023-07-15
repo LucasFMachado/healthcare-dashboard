@@ -4,7 +4,7 @@ import { styled } from 'styled-components'
 
 import { NextPageIcon, PreviousPageIcon } from '@/assets/icons'
 import { Body2, H5, Small1, Subtitle2 } from '@/styles/components'
-import { colors } from '@/styles/variables'
+import { colors, shadows } from '@/styles/variables'
 
 const usersData = [
   {
@@ -188,7 +188,7 @@ export function AppointmentsTable() {
 const TableContainer = styled.div`
   height: 100%;
   border-radius: 4px;
-  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: ${shadows.cards};
   padding: 20px;
   overflow-x: auto;
 

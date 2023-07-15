@@ -3,11 +3,11 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { FormEvent } from 'react'
-import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai'
+import { BsKeyFill, BsPersonFill } from 'react-icons/bs'
 import { styled } from 'styled-components'
 
 import { Body2, H3, Small1, Small2 } from '@/styles/components'
-import { colors } from '@/styles/variables'
+import { colors, shadows } from '@/styles/variables'
 
 export default function Login() {
   const router = useRouter()
@@ -19,11 +19,11 @@ export default function Login() {
 
   return (
     <PageWrapper>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <H3>Login</H3>
         <Credentials>
           <InputControl>
-            <AiOutlineUser />
+            <BsPersonFill />
             <input
               id="username"
               type="text"
@@ -32,7 +32,7 @@ export default function Login() {
             />
           </InputControl>
           <InputControl>
-            <AiOutlineLock />
+            <BsKeyFill />
             <input
               id="password"
               type="password"
@@ -52,7 +52,7 @@ export default function Login() {
             <Small1>Forgot you password?</Small1>
           </Link>
         </AccountActions>
-        <button onClick={handleSubmit}>
+        <button type="submit">
           <Body2>Login</Body2>
         </button>
       </Form>
@@ -74,7 +74,7 @@ const Form = styled.form`
   background-color: white;
   border-radius: 8px;
   padding: 32px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: ${shadows.cards};
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -137,14 +137,14 @@ const InputControl = styled.div`
 
   svg {
     position: absolute;
-    margin-left: 12px;
+    left: 16px;
     height: 16px;
     width: 16px;
     color: ${colors.grey.dark};
   }
 
   input {
-    padding: 0px 40px;
+    padding: 0px 50px;
     width: 100%;
     border: none;
     background: ${colors.divider};

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { styled } from 'styled-components'
 
 import { H5 } from '@/styles/components'
-import { colors } from '@/styles/variables'
+import { colors, shadows } from '@/styles/variables'
 
 const Chart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
@@ -100,6 +100,6 @@ export function PatientsChart() {
 const ChartContainer = styled.div`
   height: 370px;
   border-radius: 4px;
-  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: ${shadows.cards};
   padding: 20px;
 `

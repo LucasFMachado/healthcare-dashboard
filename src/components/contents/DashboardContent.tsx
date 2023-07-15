@@ -9,7 +9,7 @@ import {
   MedicalOperationIcon,
 } from '@/assets/icons'
 import { H6, Subtitle2 } from '@/styles/components'
-import { colors } from '@/styles/variables'
+import { colors, shadows } from '@/styles/variables'
 
 import { MonthAmountChart } from '../charts/MonthAmountChart'
 import { PatientsChart } from '../charts/PatientsChart'
@@ -66,7 +66,7 @@ export function DashboardContent() {
 const ChartContainer = styled.div`
   min-height: 370px;
   border-radius: 4px;
-  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: ${shadows.cards};
   padding: 20px;
   grid-template-columns: 1fr;
   gap: 24px;
@@ -102,7 +102,7 @@ const Summary = styled.div`
 const SummaryItem = styled.div`
   height: 88px;
   border-radius: 4px;
-  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: ${shadows.cards};
   padding: 20px;
   display: grid;
   grid-template-columns: auto 1fr;

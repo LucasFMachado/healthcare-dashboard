@@ -6,7 +6,7 @@ import { styled } from 'styled-components'
 
 import { HelpIcon } from '@/assets/icons'
 import { Body2, Subtitle2 } from '@/styles/components'
-import { colors } from '@/styles/variables'
+import { colors, shadows } from '@/styles/variables'
 import { pages } from '@/utils/pages'
 
 import { Divider } from '../shared/Divider'
@@ -17,7 +17,7 @@ export function DestokMenu() {
   return (
     <Container>
       <Brand>
-        <img src="logo.svg" alt="Healthcare logo image" />
+        <img src="brand/logo.svg" alt="Healthcare logo image" />
       </Brand>
       <MenuTitle>MEDICINE</MenuTitle>
       {pages.map(({ route, name, icon: Icon }) => (
@@ -51,8 +51,7 @@ const Container = styled.aside`
   display: flex;
   flex-direction: column;
   background-color: ${colors.white};
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 8px 0px;
-
+  box-shadow: ${shadows.layout};
   position: fixed;
 `
 
