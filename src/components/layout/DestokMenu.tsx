@@ -1,10 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { styled } from 'styled-components'
 
-import { HelpIcon } from '@/assets/icons'
+import { LogoutIcon } from '@/assets/icons'
 import { Body2, Subtitle2 } from '@/styles/components'
 import { colors, shadows } from '@/styles/variables'
 import { pages } from '@/utils/pages'
@@ -13,6 +13,11 @@ import { Divider } from '../shared/Divider'
 
 export function DestokMenu() {
   const path = usePathname()
+  const router = useRouter()
+
+  const handleLogout = () => {
+    router.push('/')
+  }
 
   return (
     <Container>
@@ -34,11 +39,13 @@ export function DestokMenu() {
         </Link>
       ))}
       <Divider />
-      <Link href="/login">
-        <MenuItem>
-          <HelpIcon size={16} color={colors.grey.lightest} />
-          <span>Help</span>
-        </MenuItem>
+      <Link href="/">
+        <button onClick={handleLogout}>
+          <MenuItem>
+            <LogoutIcon size={16} color={colors.grey.lightest} />
+            <span>Logout</span>
+          </MenuItem>
+        </button>
       </Link>
     </Container>
   )

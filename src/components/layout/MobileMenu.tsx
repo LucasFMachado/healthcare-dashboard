@@ -1,10 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { styled } from 'styled-components'
 
-import { HelpIcon } from '@/assets/icons'
+import { LogoutIcon } from '@/assets/icons'
 import { Subtitle2 } from '@/styles/components'
 import { colors, shadows } from '@/styles/variables'
 import { pages } from '@/utils/pages'
@@ -13,6 +13,11 @@ import { Divider } from '../shared/Divider'
 
 export function MobileMenu() {
   const path = usePathname()
+  const router = useRouter()
+
+  const handleLogout = () => {
+    router.push('/')
+  }
 
   return (
     <Container>
@@ -32,15 +37,12 @@ export function MobileMenu() {
         </Link>
       ))}
       <Divider />
-      <Link href="/help">
-        <MenuItem selected={path === '/help'}>
-          <HelpIcon
-            size={16}
-            color={
-              path === '/help' ? colors.primary.main : colors.grey.lightest
-            }
-          />
-        </MenuItem>
+      <Link href="/">
+        <button onClick={handleLogout}>
+          <MenuItem>
+            <LogoutIcon size={16} color={colors.grey.lightest} />
+          </MenuItem>
+        </button>
       </Link>
     </Container>
   )

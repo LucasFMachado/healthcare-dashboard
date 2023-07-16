@@ -4,7 +4,7 @@ import CreditCardIcon from './CreditCardIcon'
 import CrutchIcon from './CrutchIcon'
 import DoctorIcon from './DoctorIcon'
 import FirstAidIcon from './FirstAidIcon'
-import HelpIcon from './HelpIcon'
+import LogoutIcon from './LogoutIcon'
 import MedicalOperationIcon from './MedicalOperationIcon'
 import NextPageIcon from './NextPageIcon'
 import NotificationIcon from './NotificationIcon'
@@ -20,7 +20,7 @@ export {
   CrutchIcon,
   DoctorIcon,
   FirstAidIcon,
-  HelpIcon,
+  LogoutIcon,
   MedicalOperationIcon,
   NextPageIcon,
   NotificationIcon,
