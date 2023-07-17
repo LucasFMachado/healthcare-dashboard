@@ -9,7 +9,7 @@ import {
   MedicalOperationIcon,
 } from '@/assets/icons'
 import { H6, Subtitle2 } from '@/styles/components'
-import { colors, shadows } from '@/styles/variables'
+import { breakpoints, colors, shadows } from '@/styles/variables'
 
 import { MonthAmountChart } from '../charts/MonthAmountChart'
 import { PatientsChart } from '../charts/PatientsChart'
@@ -68,10 +68,11 @@ const ChartContainer = styled.div`
   border-radius: 4px;
   box-shadow: ${shadows.cards};
   padding: 20px;
+  display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
 
-  @media (min-width: 1024px) {
+  @media (min-width: ${breakpoints.laptop}) {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
   }
@@ -90,11 +91,11 @@ const Summary = styled.div`
   place-items: center;
   gap: 10px;
 
-  @media (min-width: 800px) {
+  @media (min-width: ${breakpoints.tablet}) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: ${breakpoints.laptop}) {
     grid-template-columns: repeat(4, 1fr);
   }
 `
@@ -110,7 +111,7 @@ const SummaryItem = styled.div`
   gap: 24px;
   width: 100%;
 
-  @media (min-width: 1024px) {
+  @media (min-width: ${breakpoints.laptop}) {
     gap: 12px;
     padding: 10px;
   }

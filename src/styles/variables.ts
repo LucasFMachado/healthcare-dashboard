@@ -38,6 +38,13 @@ export const colors = {
   },
 }
 
+export const breakpoints = {
+  phone: '600px',
+  tablet: '768px',
+  laptop: '1024px',
+  desktop: '1280px',
+}
+
 export const shadows = {
   layout: 'rgba(100, 100, 111, 0.2) 0px 0px 8px 0px;',
   cards: 'rgba(0, 0, 0, 0.1) 0px 0px 15px 5px',

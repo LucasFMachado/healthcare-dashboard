@@ -4,7 +4,7 @@ import { styled } from 'styled-components'
 
 import { NextPageIcon, PreviousPageIcon } from '@/assets/icons'
 import { Body2, H5, Small1, Subtitle2 } from '@/styles/components'
-import { colors, shadows } from '@/styles/variables'
+import { breakpoints, colors, shadows } from '@/styles/variables'
 
 const usersData = [
   {
@@ -163,24 +163,24 @@ export function AppointmentsTable() {
             </tr>
           ))}
         </tbody>
-        <Pagination>
-          <PaginationItem disabled>
-            <PreviousPageIcon color={colors.grey.dark} size={16} />
-          </PaginationItem>
-          <PaginationItem active>
-            <Small1>1</Small1>
-          </PaginationItem>
-          <PaginationItem>
-            <Small1>2</Small1>
-          </PaginationItem>
-          <PaginationItem>
-            <Small1>3</Small1>
-          </PaginationItem>
-          <PaginationItem>
-            <NextPageIcon color={colors.grey.dark} size={16} />
-          </PaginationItem>
-        </Pagination>
       </Table>
+      <Pagination>
+        <PaginationItem disabled>
+          <PreviousPageIcon color={colors.grey.dark} size={16} />
+        </PaginationItem>
+        <PaginationItem status="active">
+          <Small1>1</Small1>
+        </PaginationItem>
+        <PaginationItem>
+          <Small1>2</Small1>
+        </PaginationItem>
+        <PaginationItem>
+          <Small1>3</Small1>
+        </PaginationItem>
+        <PaginationItem>
+          <NextPageIcon color={colors.grey.dark} size={16} />
+        </PaginationItem>
+      </Pagination>
     </TableContainer>
   )
 }
@@ -234,7 +234,7 @@ export const Table = styled.table`
     display: none;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: ${breakpoints.laptop}) {
     padding: 12px;
 
     .optional_column {
@@ -243,7 +243,7 @@ export const Table = styled.table`
   }
 `
 
-const Pagination = styled.tfoot`
+const Pagination = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -251,12 +251,12 @@ const Pagination = styled.tfoot`
   padding: 12px;
 `
 
-const PaginationItem = styled.button<{ active?: boolean }>`
+const PaginationItem = styled.button<{ status?: string }>`
   height: 32px;
   width: 32px;
   border: 1px solid ${colors.grey.lightest};
   border-radius: 4px;
   background-color: ${props =>
-    props.active ? colors.primary.main : 'initial'};
-  color: ${props => (props.active ? colors.white : 'initial')};
+    props.status === 'active' ? colors.primary.main : 'initial'};
+  color: ${props => (props.status === 'active' ? colors.white : 'initial')};
 `
