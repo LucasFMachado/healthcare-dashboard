@@ -168,7 +168,7 @@ export function AppointmentsTable() {
         <PaginationItem disabled>
           <PreviousPageIcon color={colors.grey.dark} size={16} />
         </PaginationItem>
-        <PaginationItem status="active">
+        <PaginationItem $status="active">
           <Small1>1</Small1>
         </PaginationItem>
         <PaginationItem>
@@ -251,12 +251,12 @@ const Pagination = styled.div`
   padding: 12px;
 `
 
-const PaginationItem = styled.button<{ status?: string }>`
+const PaginationItem = styled.button<{ $status?: string }>`
   height: 32px;
   width: 32px;
   border: 1px solid ${colors.grey.lightest};
   border-radius: 4px;
   background-color: ${props =>
-    props.status === 'active' ? colors.primary.main : 'initial'};
-  color: ${props => (props.status === 'active' ? colors.white : 'initial')};
+    props.$status === 'active' ? colors.primary.main : 'initial'};
+  color: ${props => (props.$status === 'active' ? colors.white : 'initial')};
 `

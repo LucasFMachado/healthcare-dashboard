@@ -25,7 +25,7 @@ export function Dashboard({ children }: DashboardProps) {
   return (
     <Container>
       {fullMenu ? <DestokMenu /> : <MobileMenu />}
-      <PageWrapper margin={margin}>
+      <PageWrapper $margin={margin}>
         <Header />
         <Content>{children}</Content>
       </PageWrapper>
@@ -39,9 +39,9 @@ const Container = styled.div`
   gap: 8px;
 `
 
-const PageWrapper = styled.div<{ margin: string }>`
+const PageWrapper = styled.div<{ $margin: string }>`
   width: -webkit-fill-available;
-  margin-left: ${props => props.margin};
+  margin-left: ${props => props.$margin};
   padding-left: 16px;
 `
 

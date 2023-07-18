@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { styled } from 'styled-components'
 
 import { LogoutIcon } from '@/assets/icons'
+import { UserService } from '@/services/userServices'
 import { Subtitle2 } from '@/styles/components'
 import { colors, shadows } from '@/styles/variables'
 import { pages } from '@/utils/pages'
@@ -16,6 +17,7 @@ export function MobileMenu() {
   const router = useRouter()
 
   const handleLogout = () => {
+    UserService.logout()
     router.push('/')
   }
 
@@ -26,7 +28,7 @@ export function MobileMenu() {
       </Brand>
       {pages.map(({ route, icon: Icon }) => (
         <Link key={route} href={route}>
-          <MenuItem selected={path === route}>
+          <MenuItem $selected={path === route}>
             <Icon
               size={16}
               color={
@@ -73,8 +75,8 @@ const Brand = styled.div`
   }
 `
 
-const MenuItem = styled(Subtitle2)<{ selected?: boolean }>`
-  color: ${props => (props.selected ? colors.primary.main : colors.grey.dark)};
+const MenuItem = styled(Subtitle2)<{ $selected?: boolean }>`
+  color: ${props => (props.$selected ? colors.primary.main : colors.grey.dark)};
   display: flex;
   gap: 12px;
   align-items: center;

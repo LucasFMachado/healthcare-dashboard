@@ -1,6 +1,5 @@
 'use client'
 
-import isPropValid from '@emotion/is-prop-valid'
 import { useServerInsertedHTML } from 'next/navigation'
 import { ReactNode, useState } from 'react'
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
@@ -25,10 +24,7 @@ export function StyledComponentsRegistry({
   }
 
   return (
-    <StyleSheetManager
-      sheet={styledComponentsStyleSheet.instance}
-      shouldForwardProp={isPropValid}
-    >
+    <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
       {children as ReactNode}
       <GlobalStyle />
     </StyleSheetManager>

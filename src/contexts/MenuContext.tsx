@@ -8,7 +8,8 @@ import {
   useState,
 } from 'react'
 
-import useMedia from '@/hooks/useMedia'
+import { useMedia } from '@/hooks/useMedia'
+import { breakpoints } from '@/styles/variables'
 
 interface MenuProviderProps {
   children: ReactNode
@@ -23,7 +24,7 @@ const MenuContext = createContext({} as MenuContextProps)
 
 const MenuProvider = ({ children }: MenuProviderProps) => {
   const [fullMenu, setFullMenu] = useState(false)
-  const startFullMenu = useMedia('(min-width: 800px)')
+  const startFullMenu = useMedia(`(min-width: ${breakpoints.tablet})`)
 
   useEffect(() => {
     setFullMenu(startFullMenu ?? false)

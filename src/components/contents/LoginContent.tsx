@@ -1,81 +1,64 @@
 'use client'
 
-import { yupResolver } from '@hookform/resolvers/yup'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useForm } from 'react-hook-form'
 import { BsKeyFill, BsPersonFill } from 'react-icons/bs'
 import { styled } from 'styled-components'
-import * as yup from 'yup'
 
+import { useLogin } from '@/hooks/useLogin'
 import { Body2, H3, Small1, Small2, Small3 } from '@/styles/components'
 import { colors, shadows } from '@/styles/variables'
 
-interface SingInFormValues {
-  username: string
-  password: string
-}
-
-const signInFormSchema = yup.object().shape({
-  username: yup.string().required('Required field'),
-  password: yup.string().required('Required field'),
-})
-
 export default function LoginContent() {
-  const router = useRouter()
-
   const {
     register,
     handleSubmit,
+    handleLogin,
     formState: { errors, isSubmitting, isValid },
-  } = useForm<SingInFormValues>({
-    resolver: yupResolver(signInFormSchema),
-    defaultValues: {
-      username: 'username',
-      password: '123456',
-    },
-  })
-
-  async function handleSignIn(values: SingInFormValues) {
-    console.log('Login form values: ', values)
-    router.push('/dashboard')
-  }
+  } = useLogin()
 
   return (
     <PageWrapper>
-      <Form onSubmit={handleSubmit(handleSignIn)}>
+      <Form onSubmit={handleSubmit(handleLogin)}>
         <H3>Login</H3>
         <Credentials>
           <InputControl>
-            <InputControl>
+            <div>
               <BsPersonFill />
               <input
                 type="text"
                 placeholder="Type your username"
                 {...register('username')}
               />
-            </InputControl>
-            <ErrorMessage hasError={Boolean(errors.username)}>
-              {errors?.username?.message}
-            </ErrorMessage>
+            </div>
+            <ErrorControl>
+              {errors.username ? (
+                <Small3>{errors?.username?.message}</Small3>
+              ) : (
+                <></>
+              )}
+            </ErrorControl>
           </InputControl>
           <InputControl>
-            <InputControl>
+            <div>
               <BsKeyFill />
               <input
                 type="password"
                 placeholder="Type your password"
                 {...register('password')}
               />
-            </InputControl>
-            <ErrorMessage hasError={Boolean(errors.password)}>
-              {errors?.password?.message}
-            </ErrorMessage>
+            </div>
+            <ErrorControl>
+              {errors.password ? (
+                <Small3>{errors?.password?.message}</Small3>
+              ) : (
+                <></>
+              )}
+            </ErrorControl>
           </InputControl>
         </Credentials>
         <AccountActions>
           <div>
-            <input id="remember" type="checkbox" checked />
+            <input id="remember" type="checkbox" {...register('remember')} />
             <label htmlFor="remember">
               <Small2>Remember me</Small2>
             </label>
@@ -137,31 +120,6 @@ const Credentials = styled.div`
   gap: 8px;
 `
 
-const AccountActions = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  a {
-    text-align: center;
-    color: ${colors.grey.main};
-    transition: 0.3s;
-
-    &:hover {
-      color: ${colors.grey.dark};
-    }
-  }
-
-  > div {
-    display: flex;
-    gap: 6px;
-    color: ${colors.grey.main};
-
-    &:hover {
-      color: ${colors.grey.dark};
-    }
-  }
-`
-
 const InputControl = styled.div`
   > div {
     position: relative;
@@ -190,8 +148,33 @@ const InputControl = styled.div`
   }
 `
 
-const ErrorMessage = styled(Small3)<{ hasError: boolean }>`
+const ErrorControl = styled.div`
   color: ${colors.error.main};
   display: block;
-  height: ${props => (props.hasError ? 'initial' : '12px')};
+  height: 12px;
+`
+
+const AccountActions = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    text-align: center;
+    color: ${colors.grey.main};
+    transition: 0.3s;
+
+    &:hover {
+      color: ${colors.grey.dark};
+    }
+  }
+
+  > div {
+    display: flex;
+    gap: 6px;
+    color: ${colors.grey.main};
+
+    &:hover {
+      color: ${colors.grey.dark};
+    }
+  }
 `

@@ -21,7 +21,11 @@
         "import/no-duplicates": "off",
         "prettier/prettier": "error",
         "react/react-in-jsx-scope": "off",
-        "space-before-function-paren": ["error", "never"],
+        "space-before-function-paren": ["error", {
+            "anonymous": "always",
+            "named": "never",
+            "asyncArrow": "always"
+        }],
         "comma-dangle": "off",
         "multiline-ternary": "off",
         "simple-import-sort/imports": "error",
