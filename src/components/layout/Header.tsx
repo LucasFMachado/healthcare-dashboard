@@ -6,7 +6,7 @@ import { styled } from 'styled-components'
 import { NotificationIcon } from '@/assets/icons'
 import { useMenu } from '@/contexts/MenuContext'
 import { Body2, Small3 } from '@/styles/components'
-import { colors, shadows } from '@/styles/variables'
+import { breakpoints, colors, shadows } from '@/styles/variables'
 
 export function Header() {
   const { toggleMenu } = useMenu()
@@ -103,5 +103,13 @@ const Profile = styled.div`
     border-radius: 50%;
     width: 24px;
     height: 24px;
+  }
+
+  p {
+    display: none;
+
+    @media (min-width: ${breakpoints.laptop}) {
+      display: initial;
+    }
   }
 `

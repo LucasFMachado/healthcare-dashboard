@@ -72,14 +72,9 @@ const Wrapper = styled.div`
 const Summary = styled.div`
   width: 100%;
   display: grid;
-  /* grid-template-columns: 1fr; */
   grid-template-columns: repeat(2, 1fr);
   place-items: center;
   gap: 10px;
-
-  /* @media (max-width: ${breakpoints.tablet}) {
-    grid-template-columns: repeat(2, 1fr);
-  } */
 
   @media (min-width: ${breakpoints.laptop}) {
     grid-template-columns: repeat(4, 1fr);

@@ -84,7 +84,7 @@ const MenuItem = styled(Subtitle2)<{ $selected?: boolean }>`
   padding: 14px 0;
 
   svg {
-    height: 16px;
-    width: 16px;
+    height: 24px;
+    width: 24px;
   }
 `
