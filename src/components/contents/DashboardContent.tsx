@@ -63,21 +63,6 @@ export function DashboardContent() {
   )
 }
 
-const ChartContainer = styled.div`
-  min-height: 370px;
-  border-radius: 4px;
-  box-shadow: ${shadows.cards};
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-
-  @media (min-width: ${breakpoints.laptop}) {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-`
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -87,13 +72,14 @@ const Wrapper = styled.div`
 const Summary = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
+  /* grid-template-columns: 1fr; */
+  grid-template-columns: repeat(2, 1fr);
   place-items: center;
   gap: 10px;
 
-  @media (min-width: ${breakpoints.tablet}) {
+  /* @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: repeat(2, 1fr);
-  }
+  } */
 
   @media (min-width: ${breakpoints.laptop}) {
     grid-template-columns: repeat(4, 1fr);
@@ -130,5 +116,20 @@ const SummaryItem = styled.div`
     color: ${colors.primary.main};
     height: 40px;
     width: 40px;
+  }
+`
+
+const ChartContainer = styled.div`
+  min-height: 370px;
+  border-radius: 4px;
+  box-shadow: ${shadows.cards};
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @media (min-width: ${breakpoints.laptop}) {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
 `
