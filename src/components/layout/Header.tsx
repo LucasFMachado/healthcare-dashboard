@@ -41,7 +41,7 @@ const Container = styled.header`
   justify-content: space-between;
   background-color: ${colors.white};
   position: fixed;
-  width: inherit;
+  width: -webkit-fill-available;
   box-shadow: ${shadows.layout};
   z-index: 999;
 `
